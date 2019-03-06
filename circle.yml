@@ -3,13 +3,13 @@ version: 2.1
 jobs:
   run-single:
     docker:
-        - image: cypress-io/base:10
+        - image: cypress/base:10
     steps:
       - run: echo "runs a single job!"
 
   run-multiple:
     docker:
-      - image: cypress-io/base:10
+      - image: cypress/base:10
     parallelism: 2
     steps:
       - run: echo "runs in parallel!"
