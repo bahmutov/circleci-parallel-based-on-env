@@ -2,10 +2,14 @@ version: 2.1
 
 jobs:
   run-single:
+    docker:
+        - image: cypress-io/base:10
     steps:
       - run: echo "runs a single job!"
 
   run-multiple:
+    docker:
+      - image: cypress-io/base:10
     parallelism: 2
     steps:
       - run: echo "runs in parallel!"
@@ -13,12 +17,15 @@ jobs:
 workflows:
   version: 2.1
   main:
+    # see how to filter jobs in workflow per branch
+    # https://circleci.com/docs/2.0/configuration-reference/#jobs-1
     jobs:
       - run-multiple:
           filters:
             branches:
               only: master
+
       - run-single:
-          filers:
+          filters:
             branches:
               ignore: master
