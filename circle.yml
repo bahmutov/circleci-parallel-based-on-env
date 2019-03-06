@@ -1,0 +1,24 @@
+version: 2.1
+
+jobs:
+  run-single:
+    steps:
+      - run: echo "runs a single job!"
+
+  run-multiple:
+    parallelism: 2
+    steps:
+      - run: echo "runs in parallel!"
+
+workflows:
+  version: 2.1
+  main:
+    jobs:
+      - run-multiple:
+          filters:
+            branches:
+              only: master
+      - run-single:
+          filers:
+            branches:
+              ignore: master
