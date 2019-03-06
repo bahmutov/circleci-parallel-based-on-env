@@ -8,3 +8,7 @@ To see effective config
 circleci config process circle.yml | sed /^#/d
 ```
 
+So we do the following: in the workflow we call same job depending on the branch filters, and we pass a parameter to the job to control `parallelism`. See [circle.yml](circle.yml) and compare the runs
+
+- master branch [on two machines](https://circleci.com/gh/bahmutov/circleci-parallel-based-on-env/5)
+- another branch [on one machine](https://circleci.com/gh/bahmutov/circleci-parallel-based-on-env/6)
