@@ -24,11 +24,13 @@ workflows:
           parallelism: 2
           filters:
             branches:
-              only: master
+              # for pull requests do not run this job
+              ignore: /pull\/*/
 
       - run-it:
           # pass parameter to the job
           parallelism: 1
           filters:
             branches:
-              ignore: master
+              # run pull requests with parallelism 1
+              only: /pull\/*/
