@@ -13,6 +13,12 @@ jobs:
     steps:
       - run: echo "runs with parallelism = <<parameters.parallelism>>"
 
+  after-tests:
+    docker:
+      - image: cypress/base:10
+    steps:
+      - run: echo "all good"
+
 workflows:
   version: 2.1
   main:
@@ -36,3 +42,8 @@ workflows:
             branches:
               # run pull requests with parallelism 1
               only: /pull.*/
+
+      - after-tests:
+          requires:
+            - "parallel build job"
+            - "single build job"
