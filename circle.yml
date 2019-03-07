@@ -20,6 +20,7 @@ workflows:
     # https://circleci.com/docs/2.0/configuration-reference/#jobs-1
     jobs:
       - run-it:
+          name: parallel build job
           # pass parameter to the job
           parallelism: 2
           filters:
@@ -28,6 +29,7 @@ workflows:
               ignore: /pull.*/
 
       - run-it:
+          name: single build job
           # pass parameter to the job
           parallelism: 1
           filters:
