@@ -8,7 +8,9 @@ To see effective config
 circleci config process circle.yml | sed /^#/d
 ```
 
-So we do the following: in the workflow we call same job depending on the branch filters, and we pass a parameter to the job to control `parallelism`.
+So we do the following: in the workflow we call same job depending on the branch filters, and we pass a parameter to the job to control `parallelism`. If branch is from a forked pull requests, it will run from a branch named "pull/<number>".
+
+See [circle.yml](circle.yml) and compare the runs
 
 - if this is a `master` or internal branch and internal pull request, the branch name will be whatever you set it to.
 - if pull request is coming from external forked branch, then the branch will be named `pull/<number>`
