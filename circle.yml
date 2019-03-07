@@ -25,7 +25,7 @@ workflows:
           filters:
             branches:
               # for pull requests do not run this job
-              ignore: /pull\/*/
+              ignore: /pull.*/
 
       - run-it:
           # pass parameter to the job
@@ -33,4 +33,4 @@ workflows:
           filters:
             branches:
               # run pull requests with parallelism 1
-              only: /pull\/*/
+              only: /pull.*/
